@@ -77,4 +77,30 @@ class RadioTest {
         volume.turnDownVolume();
         assertEquals(0, volume.getCurrentVolume());
     }
+    @Test
+    void shouldOverInitialRadioStation() {
+        Radio radioStation = new Radio();
+        radioStation.setCurrentRadioStation(10);
+        assertEquals(0, radioStation.getCurrentRadioStation());
+    }
+    @Test
+    public void shouldUnderInitialRadioStation() {
+        Radio radioStation = new Radio();
+        radioStation.setCurrentRadioStation(-1);
+        assertEquals(0, radioStation.getCurrentRadioStation());
+    }
+
+    @Test
+    public void shouldOverInitialVolume() {
+        Radio volume = new Radio();
+        volume.setCurrentVolume(12);
+        assertEquals(0, volume.getCurrentVolume());
+    }
+
+    @Test
+    public void shouldUnderInitialVolume() {
+        Radio volume = new Radio();
+        volume.setCurrentVolume(-1);
+        assertEquals(0, volume.getCurrentVolume());
+    }
 }

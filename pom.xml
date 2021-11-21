@@ -45,8 +45,7 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>verify</phase>
+                        <id>report-12345</id>
                         <goals>
                             <goal>report</goal>
                         </goals>
