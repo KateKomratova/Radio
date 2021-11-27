@@ -9,9 +9,17 @@ class RadioTest {
     @Test
     void shouldClickNextRadioStation() {
         Radio radioStation = new Radio();
-        radioStation.setCurrentRadioStation(5);
+        radioStation.setCurrentRadioStation(0);
         radioStation.nextRadioStation();
-        assertEquals(6, radioStation.getCurrentRadioStation());
+        assertEquals(1, radioStation.getCurrentRadioStation());
+    }
+
+    @Test
+    void shouldClickNextRadioStationLast() {
+        Radio radioStation = new Radio();
+        radioStation.setCurrentRadioStation(8);
+        radioStation.nextRadioStation();
+        assertEquals(9, radioStation.getCurrentRadioStation());
     }
 
     @Test
@@ -39,11 +47,19 @@ class RadioTest {
     }
 
     @Test
+    void shouldClickPrevRadioStationLast() {
+        Radio radioStation = new Radio();
+        radioStation.setCurrentRadioStation(9);
+        radioStation.prevRadioStation();
+        assertEquals(8, radioStation.getCurrentRadioStation());
+    }
+
+    @Test
     void shouldClickIncreaseVolume() {
         Radio volume = new Radio();
-        volume.setCurrentVolume(5);
+        volume.setCurrentVolume(0);
         volume.increaseVolume();
-        assertEquals(6, volume.getCurrentVolume());
+        assertEquals(1, volume.getCurrentVolume());
     }
 
     @Test
@@ -77,12 +93,14 @@ class RadioTest {
         volume.turnDownVolume();
         assertEquals(0, volume.getCurrentVolume());
     }
+
     @Test
     void shouldOverInitialRadioStation() {
         Radio radioStation = new Radio();
         radioStation.setCurrentRadioStation(10);
         assertEquals(0, radioStation.getCurrentRadioStation());
     }
+
     @Test
     public void shouldUnderInitialRadioStation() {
         Radio radioStation = new Radio();

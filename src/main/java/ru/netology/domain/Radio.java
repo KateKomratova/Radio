@@ -5,32 +5,30 @@ public class Radio {
     private int currentRadioStation;
 
     public void nextRadioStation() {
-        if (currentRadioStation < 9) {
-            currentRadioStation ++;
+        if (currentRadioStation == 9) {
+            currentRadioStation = 0;
+            return;
         }
-            if (currentRadioStation == 9) {
-                currentRadioStation = 0;
-            }
+        currentRadioStation++;
     }
 
     public void prevRadioStation() {
-        if (currentRadioStation > 0) {
-            currentRadioStation --;
-        }
         if (currentRadioStation == 0) {
             currentRadioStation = 9;
+            return;
         }
+        currentRadioStation--;
     }
 
     public void increaseVolume() {
         if (currentVolume < 10) {
-            currentVolume ++;
+            currentVolume++;
         }
     }
 
     public void turnDownVolume() {
         if (currentVolume > 0) {
-            currentVolume --;
+            currentVolume--;
         }
     }
 
