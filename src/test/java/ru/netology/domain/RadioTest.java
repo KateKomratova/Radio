@@ -8,7 +8,8 @@ class RadioTest {
 
     @Test
     void shouldClickNextRadioStation() {
-        Radio radioStation = new Radio(5, 12);
+        Radio radioStation = new Radio(12);
+        radioStation.setCurrentRadioStation(5);
         radioStation.nextRadioStation();
         assertEquals(6, radioStation.getCurrentRadioStation());
     }
@@ -23,56 +24,64 @@ class RadioTest {
 
     @Test
     void shouldClickNextRadioStationLast() {
-        Radio radioStation = new Radio(14, 15);
+        Radio radioStation = new Radio(18);
+        radioStation.setCurrentRadioStation(16);
         radioStation.nextRadioStation();
-        assertEquals(15, radioStation.getCurrentRadioStation());
+        assertEquals(17, radioStation.getCurrentRadioStation());
     }
 
     @Test
     void shouldClickNextRadioStationMin() {
-        Radio radioStation = new Radio(-1, 31);
+        Radio radioStation = new Radio(31);
+        radioStation.setCurrentRadioStation(0);
         radioStation.nextRadioStation();
-        assertEquals(0, radioStation.getCurrentRadioStation());
+        assertEquals(1, radioStation.getCurrentRadioStation());
     }
 
     @Test
     void shouldClickNextRadioStationMax() {
-        Radio radioStation = new Radio(31, 31);
+        Radio radioStation = new Radio(12);
+        radioStation.setCurrentRadioStation(11);
         radioStation.nextRadioStation();
         assertEquals(0, radioStation.getCurrentRadioStation());
     }
 
     @Test
     void shouldClickPrevRadioStation() {
-        Radio radioStation = new Radio(15, 30);
-        radioStation.prevRadioStation();
-        assertEquals(14, radioStation.getCurrentRadioStation());
-    }
-
-    @Test
-    void shouldClickPrevRadioStationMin() {
-        Radio radioStation = new Radio(0, 13);
+        Radio radioStation = new Radio(15);
+        radioStation.setCurrentRadioStation(14);
         radioStation.prevRadioStation();
         assertEquals(13, radioStation.getCurrentRadioStation());
     }
 
     @Test
-    void shouldClickPrevRadioStationLast() {
-        Radio radioStation = new Radio(15, 15);
+    void shouldClickPrevRadioStationMin() {
+        Radio radioStation = new Radio(13);
+        radioStation.setCurrentRadioStation(0);
         radioStation.prevRadioStation();
-        assertEquals(14, radioStation.getCurrentRadioStation());
+        assertEquals(12, radioStation.getCurrentRadioStation());
+    }
+
+    @Test
+    void shouldClickPrevRadioStationLast() {
+        Radio radioStation = new Radio(15);
+        radioStation.setCurrentRadioStation(14);
+        radioStation.prevRadioStation();
+        assertEquals(13, radioStation.getCurrentRadioStation());
     }
 
     @Test
     void shouldClickIncreaseVolume() {
-        Radio volume = new Radio(75, 0, 150);
+        Radio volume = new Radio();
+        volume.setCurrentVolume(75);
         volume.increaseVolume();
         assertEquals(76, volume.getCurrentVolume());
     }
 
     @Test
     void shouldClickIncreaseVolumeMax() {
-        Radio volume = new Radio(100, 0, 100);
+        Radio volume = new Radio();
+        volume.setCurrentVolume(100);
         volume.increaseVolume();
         assertEquals(100, volume.getCurrentVolume());
     }
@@ -87,14 +96,16 @@ class RadioTest {
 
     @Test
     void shouldClickTurnDownVolume() {
-        Radio volume = new Radio(55, 0, 110);
+        Radio volume = new Radio();
+        volume.setCurrentVolume(55);
         volume.turnDownVolume();
         assertEquals(54, volume.getCurrentVolume());
     }
 
     @Test
     void shouldClickTurnDownVolumeMin() {
-        Radio volume = new Radio(0, 0, 105);
+        Radio volume = new Radio();
+        volume.setCurrentVolume(0);
         volume.turnDownVolume();
         assertEquals(0, volume.getCurrentVolume());
     }

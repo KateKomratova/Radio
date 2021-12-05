@@ -3,7 +3,7 @@ package ru.netology.domain;
 public class Radio {
     private int currentVolume;
     private int currentRadioStation;
-    private int maxRadioStation = 9;
+    private int maxNumberRadioStation = 10;
     private int minRadioStation;
     private int minVolume;
     private int maxVolume = 100;
@@ -11,23 +11,13 @@ public class Radio {
     public Radio() {
     }
 
-    public Radio(int maxRadioStation) {
-        this.maxRadioStation = maxRadioStation;
+    public Radio(int maxNumberRadioStation) {
+        this.maxNumberRadioStation = maxNumberRadioStation;
     }
 
-    public Radio(int currentRadioStation, int maxRadioStation) {
-        this.currentRadioStation = currentRadioStation;
-        this.maxRadioStation = maxRadioStation;
-    }
-
-    public Radio(int currentVolume, int minVolume, int maxVolume) {
-        this.currentVolume = currentVolume;
-        this.minVolume = minVolume;
-        this.maxVolume = maxVolume;
-    }
 
     public void nextRadioStation() {
-        if (currentRadioStation == maxRadioStation) {
+        if (currentRadioStation == maxNumberRadioStation--) {
             currentRadioStation = minRadioStation;
             return;
         }
@@ -36,7 +26,7 @@ public class Radio {
 
     public void prevRadioStation() {
         if (currentRadioStation == minRadioStation) {
-            currentRadioStation = maxRadioStation;
+            currentRadioStation = maxNumberRadioStation--;
             return;
         }
         currentRadioStation--;
@@ -59,7 +49,7 @@ public class Radio {
     }
 
     public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation > maxRadioStation) {
+        if (currentRadioStation > maxNumberRadioStation--) {
             return;
         }
         if (currentRadioStation < minRadioStation) {
@@ -83,12 +73,13 @@ public class Radio {
         this.currentVolume = currentVolume;
     }
 
-    public int getMaxRadioStation() {
-        return maxRadioStation;
+
+    public int getMaxNumberRadioStation() {
+        return maxNumberRadioStation;
     }
 
-    public void setMaxRadioStation(int maxRadioStation) {
-        this.maxRadioStation = maxRadioStation;
+    public void setMaxNumberRadioStation(int maxNumberRadioStation) {
+        this.maxNumberRadioStation = maxNumberRadioStation;
     }
 
     public int getMinRadioStation() {
